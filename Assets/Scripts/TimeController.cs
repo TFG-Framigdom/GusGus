@@ -40,6 +40,7 @@ public class TimeController : MonoBehaviour
                 tiempoRestante = 0;
                 finalizarPartida.gameObject.SetActive(true);
                 player.SetActive(false);
+                tiempoInvertido();
 
 
                 Debug.Log("Time's up!");
