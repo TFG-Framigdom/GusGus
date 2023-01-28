@@ -21,9 +21,13 @@ public class TimeController : MonoBehaviour
 
     public GameObject player;
 
+    //Scriptable Object
+    public Prueba pruebaTiempo;
 
-    void Awake()
+
+    void Start()
     {
+        segundos = pruebaTiempo.tiempo;
         tiempoRestante = segundos;
         timerIsRunning = true;
     }
@@ -34,25 +38,28 @@ public class TimeController : MonoBehaviour
         if(timerIsRunning)
         {
             tiempoRestante -= Time.deltaTime;
-            if(tiempoRestante < 1)
-            {
-                timerIsRunning = false;
-                tiempoRestante = 0;
+            if(tiempoRestante < 1){
                 finalizarPartida.gameObject.SetActive(true);
-                player.SetActive(false);
                 tiempoInvertido();
-
-
-                Debug.Log("Time's up!");
+                OnDisable();
+                
             }
 
             tiempo.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestante / 60), tiempoRestante % 60);
-            Debug.Log(tiempo.text);
         }
         else
         {
             tiempo.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestante / 60), tiempoRestante % 60);
         }
+    }
+    void OnDisable()
+    {
+        timerIsRunning = false;
+        tiempoRestante = 0;
+        if(player != null){
+            player.SetActive(false);
+        }
+        Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
         if(tiempoRestante < 1)

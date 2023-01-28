@@ -19,7 +19,6 @@ public class GameFinish : MonoBehaviour
 
             tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
             tiempo.StopTimer();
-            Debug.Log("si se ha parado el tiempo");
             tiempo.tiempoInvertido();
             Debug.Log("Game Finished");
         }
