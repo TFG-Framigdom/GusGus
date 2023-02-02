@@ -22,12 +22,12 @@ public class TimeController : MonoBehaviour
     public GameObject player;
 
     //Scriptable Object
-    public Prueba pruebaTiempo;
+    public LecturaFicheroSO lectura;
 
 
     void Start()
     {
-        segundos = pruebaTiempo.tiempo;
+        segundos = lectura.tiempo;
         tiempoRestante = segundos;
         timerIsRunning = true;
     }

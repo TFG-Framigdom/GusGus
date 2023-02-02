@@ -10,6 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5b7e1d67527d5944adf65628190673a, type: 3}
-  m_Name: CargaTiempo
-  m_EditorClassIdentifier: 
-  tiempo: 0
+  m_Name: CargarFichero
+  m_EditorClassIdentifier: Assembly-CSharp::LecturaFichero
+  tiempo: 10
+  "Tama\xF1oX": 20
+  "Tama\xF1oY": 20
+  posicionJugador: {x: 0, y: 1, z: 0}
+  posicionSalida: {x: 21, y: 18, z: 0}

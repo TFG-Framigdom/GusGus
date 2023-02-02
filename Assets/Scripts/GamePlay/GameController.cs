@@ -11,36 +11,51 @@ public class GameController : MonoBehaviour
     public TileBase tile; 
     public Camera camara;
     
+    //Scriptable Object
+    public LecturaFicheroSO lectura;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        dimensionX = lectura.TamañoX;
+        dimensionY = lectura.TamañoY;
+    }
+    
     void Start()
     {
         cuadricula = GetComponent<Tilemap>();
-        GenerarMapa();
+        GenerarMapa2();
         AjustarCamara();
+        CentrarCamara();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void GenerarMapa()
-    {
-        int InicioXNegativa = dimensionX / -2;
-        int InicioYNegativa = dimensionY / -2;
-        int InicioXPositiva = InicioXNegativa*-1;
-        int IincioYPositiva = InicioYNegativa*-1;
-        for (int x = InicioXNegativa; x < InicioXPositiva; x++)
+    public void GenerarMapa2(){
+        for (int x = 0; x < dimensionX; x++)
         {
-            for (int y = InicioYNegativa; y < IincioYPositiva; y++)
+            for (int y = 0; y < dimensionY; y++)
             {
                 cuadricula.SetTile(new Vector3Int(x, y, 0), tile);
             }
         }
-        //cuadricula.transform.position = new Vector3(0, 0, 0);
     }
+    
+    
+    
+    // public void GenerarMapa()
+    // {
+    //     int InicioXNegativa = dimensionX / -2;
+    //     int InicioYNegativa = dimensionY / -2;
+    //     int InicioXPositiva = InicioXNegativa*-1;
+    //     int IincioYPositiva = InicioYNegativa*-1;
+    //     for (int x = InicioXNegativa; x < InicioXPositiva; x++)
+    //     {
+    //         for (int y = InicioYNegativa; y < IincioYPositiva; y++)
+    //         {
+    //             cuadricula.SetTile(new Vector3Int(x, y, 0), tile);
+    //         }
+    //     }
+    //     //cuadricula.transform.position = new Vector3(0, 0, 0);
+    // }
 
     public void AjustarCamara()
     {
@@ -56,6 +71,10 @@ public class GameController : MonoBehaviour
         {
             camara.orthographicSize = alto / 2;
         }
+    }
+    public void CentrarCamara()
+    {
+        camara.transform.position = new Vector3(dimensionX / 2, dimensionY / 2, -10);
     }
 
     // public void EscalarMapa2()

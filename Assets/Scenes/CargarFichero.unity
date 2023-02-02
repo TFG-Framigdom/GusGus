@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textFile: {fileID: 4900000, guid: 6aa617aa4a0b6cc4fb2f81477df2c3a3, type: 3}
-  pruebaTiempo: {fileID: 11400000, guid: 99f39ff8fd0dfdb4697534ff8e5bf268, type: 2}
+  lectura: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
 --- !u!114 &919165269
 MonoBehaviour:
   m_ObjectHideFlags: 0
