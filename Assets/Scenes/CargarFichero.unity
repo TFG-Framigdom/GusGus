@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textFile: {fileID: 4900000, guid: 6aa617aa4a0b6cc4fb2f81477df2c3a3, type: 3}
+  jsonFile: {fileID: 4900000, guid: 7c096338c60cb114598fda5f09a13318, type: 3}
   lectura: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
 --- !u!114 &919165269
 MonoBehaviour:

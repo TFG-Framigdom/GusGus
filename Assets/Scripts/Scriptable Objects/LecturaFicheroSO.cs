@@ -13,6 +13,10 @@ public class LecturaFicheroSO : ScriptableObject
 
     [SerializeField] public  Vector3 posicionSalida;
 
-    [SerializeField] public  int[] values;
+    
+
+
+
+
 
 }
