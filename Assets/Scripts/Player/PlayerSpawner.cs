@@ -9,6 +9,8 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject player;
     public LecturaFicheroSO lectura;
     public GameObject playerParent;
+
+
     
     public void InstantiatePlayer()
     {

@@ -25,20 +25,9 @@ public class ReadFile : MonoBehaviour
     void ReadTextJSON(){ 
         MazeSettings settings =  JsonUtility.FromJson<MazeSettings>(jsonFile.ToString());
         lectura.tiempo = settings.Tiempo;
-        Debug.Log(settings.Tiempo);
         lectura.TamañoX = settings.Tamano[0];
         lectura.TamañoY = settings.Tamano[1];
-        lectura.posicionJugador = new Vector3(settings.PJugador[0], settings.PJugador[1], 0);
-        lectura.posicionSalida = new Vector3(settings.Pmeta[0], settings.Pmeta[1], 0);
-        
         int[,] maze = settings.Convert2DArray();
-         
-
-
-
-        
-
-
     }
 
 

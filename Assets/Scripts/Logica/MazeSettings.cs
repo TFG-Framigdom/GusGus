@@ -4,8 +4,6 @@ public class MazeSettings
 {
     public int[] Tamano;
     public int Tiempo;
-    public int[] PJugador; 
-    public int[] Pmeta;
     public int[] Laberinto;   
 
     public int[,] Convert2DArray()

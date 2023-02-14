@@ -10,9 +10,6 @@ public class LecturaFicheroSO : ScriptableObject
     [SerializeField] public int TamañoY;
 
     [SerializeField] public  Vector3 posicionJugador;
-
-    [SerializeField] public  Vector3 posicionSalida;
-
     
 
 
