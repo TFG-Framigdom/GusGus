@@ -1,0 +1,23 @@
+tamaño:8,8
+Tiempo:400
+Pjugador:0,1
+Pmeta:9,6
+//
+V(1,2)
+T(3,2)
+P(5,5)
+A(3,4),S(5,6)
+//
+2
+L(6,3)
+H(6,1)
+//
+Laberinto
+filas: 1  1  1  1  1  1  1  1
+filas: 1  0  0  0  0  2  0  2
+filas: 1  0  1  1  1  2  1  1
+filas: 1  0  0  2  1  0  1  1
+filas: 1  1  0  0  1  0  2  1
+filas: 1  2  0  2  0  0  0  1
+filas: 2  0  0  1  1  1  2  1
+filas: 1  1  1  1  1  1  1  1
