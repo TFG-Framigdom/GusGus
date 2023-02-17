@@ -30,5 +30,9 @@ public class ReadFile : MonoBehaviour
         int[,] maze = settings.Convert2DArray();
     }
 
+    // void ReadRestrictions(){
+        
+    // }
+
 
 }
