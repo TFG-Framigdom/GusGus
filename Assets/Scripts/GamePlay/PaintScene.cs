@@ -32,17 +32,15 @@ public class PaintScene : MonoBehaviour
     //JSON
     public TextAsset jsonFile;
 
-
-    private MazeSettings settings;
-
     public UnityEvent OnPlayerSpawned;
     
+    private int[,] maze;
 
     void Awake()
     {
         dimensionX = lectura.TamañoX;
         dimensionY = lectura.TamañoY;
-        settings =  JSONReader.ReadMazeSettings(jsonFile.ToString());
+        maze = lectura.laberinto;
     }
 
     void Start()
@@ -88,7 +86,6 @@ public class PaintScene : MonoBehaviour
 
 
     public void CrearLaberinto(){
-        int[,] maze = settings.Convert2DArray();
         
         if(dimensionX == maze.GetLength(0) && dimensionY == maze.GetLength(1)){
             for (int filas = 0; filas < dimensionX; filas++)
@@ -116,6 +113,8 @@ public class PaintScene : MonoBehaviour
         }
         else{
             Debug.Log("El tamaño del laberinto no coincide con el tamaño del mapa");
+            Debug.Log("Tamaño del mapa: " + dimensionX + "x" + dimensionY);
+            Debug.Log("Tamaño del laberinto: " + maze.GetLength(0) + "x" + maze.GetLength(1));
         }
     }
 

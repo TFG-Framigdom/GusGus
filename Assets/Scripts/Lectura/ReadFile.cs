@@ -11,7 +11,6 @@ public class ReadFile : MonoBehaviour
 {
 
     public Button button{get {return GetComponent<Button>();}}
-    public TextAsset textFile;
     public TextAsset jsonFile;
     [SerializeField] LecturaFicheroSO lectura;
 
@@ -28,6 +27,7 @@ public class ReadFile : MonoBehaviour
         lectura.TamañoX = settings.Tamano[0];
         lectura.TamañoY = settings.Tamano[1];
         int[,] maze = settings.Convert2DArray();
+        lectura.laberinto = maze;
     }
 
     // void ReadRestrictions(){

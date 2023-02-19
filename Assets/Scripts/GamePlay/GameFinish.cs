@@ -9,6 +9,8 @@ public class GameFinish : MonoBehaviour
     //GameOver
     public RectTransform finalizarPartida;
 
+    
+
     //Tiempo
     TimeController tiempo;
     // Scriptable Object
@@ -22,6 +24,7 @@ public class GameFinish : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             finalizarPartida.gameObject.SetActive(true);
+
 
             tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
             tiempo.StopTimer();

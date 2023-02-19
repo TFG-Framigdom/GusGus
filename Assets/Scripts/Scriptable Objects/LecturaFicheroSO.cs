@@ -11,6 +11,7 @@ public class LecturaFicheroSO : ScriptableObject
 
     [SerializeField] public  Vector3 posicionJugador;
     
+    [SerializeField] public int[,] laberinto;
 
 
 
