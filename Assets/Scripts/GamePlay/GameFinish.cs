@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+using UnityEngine.AI;
+using System.Collections;
+
 
 public class GameFinish : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class GameFinish : MonoBehaviour
     // Scriptable Object
     public LecturaFicheroSO lectura;
 
+    private GameObject enemigoBasico;
+
+
+    void Start()
+    {
+        StartCoroutine(EsperarParaEncontrarAlEnemigo());
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,7 +32,7 @@ public class GameFinish : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             finalizarPartida.gameObject.SetActive(true);
-
+            StopEnemy();
 
             tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
             tiempo.StopTimer();
@@ -35,5 +43,34 @@ public class GameFinish : MonoBehaviour
         
     }
 
+    void StopEnemy()
+    { 
+        NavMeshAgent navMeshAgent = enemigoBasico.GetComponent<NavMeshAgent>();
+        //navMeshAgent.enabled = false;
+        if(navMeshAgent.isActiveAndEnabled && navMeshAgent.isOnNavMesh){
+            Debug.Log("Enemy Stopped");
+            navMeshAgent.isStopped = true;
+        }else{
+            Debug.Log("Enemy Not Stopped");
+        }
+        //navMeshAgent.Stop();  
+        
+        //agentEnemy.GetComponent<NavMeshAgent>().isStopped = true;
+    }
+
+    IEnumerator EsperarParaEncontrarAlEnemigo()
+    {
+        while (enemigoBasico == null)
+        {
+            BasicEnemyController enemigo = FindObjectOfType<BasicEnemyController>();
+            if (enemigo != null)
+            {
+                enemigoBasico = enemigo.gameObject;
+            }
+            yield return null;
+        }
+
+        // Aquí ya se tiene el transform del jugador, se puede usar para realizar cualquier acción que necesite.
+    }
 
 }

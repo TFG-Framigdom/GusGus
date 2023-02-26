@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class PaintScene : MonoBehaviour
 {
@@ -29,12 +30,10 @@ public class PaintScene : MonoBehaviour
     //Scriptable Object
     public LecturaFicheroSO lectura;
 
-    //JSON
-    public TextAsset jsonFile;
-
-    public UnityEvent OnPlayerSpawned;
+    public UnityEvent OnCharactersSpawned;
     
     private int[,] maze;
+
 
     void Awake()
     {
@@ -104,12 +103,16 @@ public class PaintScene : MonoBehaviour
                         //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
                         background.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tilePosicionInicial);
                         lectura.posicionJugador = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                    }else if(maze[filas,columnas]==52){
+                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+                        lectura.posicionEnemigoBasico = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+
                     }
                     
                 }
             }
             //Instanciamos al jugador respecto a la posición que hemos guardado
-            OnPlayerSpawned.Invoke();
+            OnCharactersSpawned.Invoke();
         }
         else{
             Debug.Log("El tamaño del laberinto no coincide con el tamaño del mapa");

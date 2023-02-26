@@ -17,6 +17,7 @@ public class PlayerSpawner : MonoBehaviour
         GameObject player = GetPlayer();
         player.transform.position = lectura.posicionJugador;
         player.transform.parent = playerParent.transform;
+        
   
     }
 
