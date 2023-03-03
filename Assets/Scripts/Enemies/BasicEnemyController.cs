@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
+using System.Collections.Generic;
 
 public class BasicEnemyController : MonoBehaviour
 {
@@ -9,11 +9,24 @@ public class BasicEnemyController : MonoBehaviour
     private NavMeshAgent agent;
     private bool facingRight = false;
 
+    private Vector2 posicionInicialJugador;
+
+    public float tiempoEspera = 1f;
+
+    public LecturaFicheroSO lectura;
+
+    private List<GameObject> enemigosBasicos = new List<GameObject>();
+
+
+
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject[] enemigosBasicosPantalla = GameObject.FindGameObjectsWithTag("EnemyBasic");
+        foreach(GameObject enemigo in enemigosBasicosPantalla){
+            enemigosBasicos.Add(enemigo);
+        }
         agent = GetComponent<NavMeshAgent>();
         if(this.transform.rotation.x != 0)
             this.transform.rotation = Quaternion.identity;
@@ -38,7 +51,7 @@ public class BasicEnemyController : MonoBehaviour
         
     }
 
-    IEnumerator EsperarParaEncontrarJugador()
+    IEnumerator<GameObject> EsperarParaEncontrarJugador()
     {
         while (player == null)
         {
@@ -61,9 +74,54 @@ public class BasicEnemyController : MonoBehaviour
 
     }
 
-    // private void StopEnemy()
-    // {
-    //     if(player.)
-    //     agent.isStopped = true;
-    // }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            StopEnemigues();
+            //quitamos vida al jugador
+            collision.GetComponent<PlayerStadistic>().PlayerDamage();
+            StartCoroutine(VolverAPosicionesIniciales());
+
+        }
+    }
+
+    IEnumerator<WaitForSeconds> VolverAPosicionesIniciales()
+    {
+        yield return new WaitForSeconds(tiempoEspera);
+        if(lectura.posicionEnemigoBasicos.Count == enemigosBasicos.Count){
+            for(int i = 0; i < enemigosBasicos.Count ; i++){
+                //Debug.Log("Posicion enemigos: " + i + " " + lectura.posicionEnemigoBasicos[i]);
+                //desactivamos el enemigo para que se posicione en la posicion inicial sin errores
+                enemigosBasicos[i].SetActive(false);
+                enemigosBasicos[i].transform.position = lectura.posicionEnemigoBasicos[i];
+                //activamos el enemigo para que vuelva a la vida
+                enemigosBasicos[i].SetActive(true);
+                //Debug.Log("Posicion enemigosGameObject:" + enemigosBasicos[i].transform.position);  
+            }
+        }
+        posicionInicialJugador = lectura.posicionJugador;
+        GameObject.FindGameObjectWithTag("Player").transform.position = posicionInicialJugador;
+        yield return new WaitForSeconds(tiempoEspera);
+
+        ReadyEnemigues();
+    }
+
+    public void StopEnemigues(){
+        NavMeshAgent[] enemigos = FindObjectsOfType<NavMeshAgent>();
+        foreach (var enemigo in enemigos)
+        {
+            enemigo.isStopped = true;
+        }
+    }
+
+    void ReadyEnemigues(){
+        NavMeshAgent[] enemigos = FindObjectsOfType<NavMeshAgent>();
+        foreach (var enemigo in enemigos)
+        {
+            enemigo.isStopped = false;
+        }
+    }
+
+
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "New Scriptable Object", menuName = "Scriptable Objects/LecturaFichero")]
 public class LecturaFicheroSO : ScriptableObject
@@ -12,6 +13,8 @@ public class LecturaFicheroSO : ScriptableObject
     [SerializeField] public  Vector3 posicionJugador;
     
     [SerializeField] public int[,] laberinto;
+
+    [SerializeField] public List<Vector3> posicionEnemigoBasicos;
 
     [SerializeField] public Vector3 posicionEnemigoBasico;
 

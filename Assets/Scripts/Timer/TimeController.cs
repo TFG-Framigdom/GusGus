@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
+
 
 public class TimeController : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class TimeController : MonoBehaviour
 
     //Scriptable Object
     public LecturaFicheroSO lectura;
+
 
 
     void Start()
@@ -59,6 +62,7 @@ public class TimeController : MonoBehaviour
         if(player != null){
             player.SetActive(false);
         }
+        StopEnemigues();
         Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
@@ -73,5 +77,13 @@ public class TimeController : MonoBehaviour
     public void StopTimer()
     {
         timerIsRunning = false;
+    }
+
+      void StopEnemigues(){
+        NavMeshAgent[] enemigos = FindObjectsOfType<NavMeshAgent>();
+        foreach (var enemigo in enemigos)
+        {
+            enemigo.isStopped = true;
+        }
     }
 }

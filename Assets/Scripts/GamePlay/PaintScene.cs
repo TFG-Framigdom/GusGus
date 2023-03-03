@@ -48,6 +48,7 @@ public class PaintScene : MonoBehaviour
         AjustarCamara();
         CentrarCamara();
         CrearLaberinto();
+        PosicionamientoDeCharacters();
 
 
     }
@@ -99,20 +100,21 @@ public class PaintScene : MonoBehaviour
                         //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
                         salida.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tileSalida);
                     }
-                    else if(maze[filas,columnas] == 4){
-                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
-                        background.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tilePosicionInicial);
-                        lectura.posicionJugador = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
-                    }else if(maze[filas,columnas]==52){
-                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
-                        lectura.posicionEnemigoBasico = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                    // else if(maze[filas,columnas] == 4){
+                    //     //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+                    //     background.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tilePosicionInicial);
+                    //     lectura.posicionJugador = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                    // }else if(maze[filas,columnas]==52){
+                    //     //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+                    //     lectura.posicionEnemigoBasicos.Add(new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0));
+                    //     lectura.posicionEnemigoBasico = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
 
-                    }
+                    // }
                     
                 }
             }
             //Instanciamos al jugador respecto a la posición que hemos guardado
-            OnCharactersSpawned.Invoke();
+            //OnCharactersSpawned.Invoke();
         }
         else{
             Debug.Log("El tamaño del laberinto no coincide con el tamaño del mapa");
@@ -121,6 +123,27 @@ public class PaintScene : MonoBehaviour
         }
     }
 
+    public void PosicionamientoDeCharacters(){
+        for (int filas = 0; filas < dimensionX; filas++)
+            {
+            for (int columnas = 0; columnas < dimensionY; columnas++)
+                {
+                    if(maze[filas,columnas] == 4){
+                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+                        background.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tilePosicionInicial);
+                        lectura.posicionJugador = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                    }else if(maze[filas,columnas]==52){
+                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+                        lectura.posicionEnemigoBasicos.Add(new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0));
+                        //lectura.posicionEnemigoBasico = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+
+                    }
+
+                }
+            }
+            //Instanciamos al jugador respecto a la posición que hemos guardado
+            OnCharactersSpawned.Invoke();
+    }
 
 
 
