@@ -28,6 +28,7 @@ public class ReadFile : MonoBehaviour
         lectura.TamañoY = settings.Tamano[1];
         int[,] maze = settings.Convert2DArray();
         lectura.laberinto = maze;
+
     }
 
     // void ReadRestrictions(){

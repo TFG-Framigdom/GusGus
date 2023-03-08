@@ -66,12 +66,14 @@ public class TimeController : MonoBehaviour
         Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
-        if(tiempoRestante < 1)
-        {
-            tiempoRestanteInvertido = segundos;
+      if(tiempoRestante>segundos){
+            tiempoRestanteInvertido = 0;
+            tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                
+        }else{
+            tiempoRestanteInvertido = segundos - (int)tiempoRestante;
+            tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
         }
-        tiempoRestanteInvertido = segundos - (int)tiempoRestante;
-        tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
+        
     }
 
     public void StopTimer()
@@ -79,11 +81,15 @@ public class TimeController : MonoBehaviour
         timerIsRunning = false;
     }
 
-      void StopEnemigues(){
+    void StopEnemigues(){
         NavMeshAgent[] enemigos = FindObjectsOfType<NavMeshAgent>();
         foreach (var enemigo in enemigos)
         {
             enemigo.isStopped = true;
         }
+    }
+
+    public void ItemTimer(int tiempoItem){
+        tiempoRestante += tiempoItem;
     }
 }

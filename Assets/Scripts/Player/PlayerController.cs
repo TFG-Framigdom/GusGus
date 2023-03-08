@@ -11,10 +11,15 @@ public class  PlayerController : MonoBehaviour
     private bool isMovementEnabled = true;
     private float tiempoMov;
 
+    public LecturaFicheroSO lectura;
+
+    public GameObject player;
+    private bool vulnerable = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         tiempoMov = 0f;
+        PlayerSpawner();
     }
 
     // Update is called once per frame
@@ -52,12 +57,27 @@ public class  PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "EnemyBasic")
+        if(other.gameObject.tag == "EnemyBasic" && vulnerable)
         {
             isMovementEnabled = false;
             //si el player esta activo
+            PlayerStadistic playerStadistics = FindObjectOfType<PlayerStadistic>();
+            playerStadistics.PlayerDamage();
+            vulnerable = false;
             if(this.gameObject.activeSelf)
             StartCoroutine(EnablePlayerControlAfterDelay(1f));
+            
+            
+        }else if(other.gameObject.tag == "ItemTiempo"){
+            TimeController tiempo =  FindObjectOfType<TimeController>();
+            tiempo.ItemTimer(30);
+            
+            Destroy(other.gameObject);
+
+        }else if(other.gameObject.tag == "ItemVida"){
+            PlayerStadistic playerStadistics = FindObjectOfType<PlayerStadistic>();
+            playerStadistics.PlayerHeal();
+            Destroy(other.gameObject);
         }
     }
 
@@ -65,5 +85,12 @@ public class  PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySeconds);
         isMovementEnabled = true;
+        vulnerable = true;
+    }
+
+    public void PlayerSpawner(){
+        Debug.Log("peneeee"+ lectura.posicionJugador);
+        player.transform.position = lectura.posicionJugador;
+        Debug.Log("peneee2"+ player.transform.position);
     }
 }

@@ -80,9 +80,7 @@ public class BasicEnemyController : MonoBehaviour
         {
             StopEnemigues();
             //quitamos vida al jugador
-            collision.GetComponent<PlayerStadistic>().PlayerDamage();
             StartCoroutine(VolverAPosicionesIniciales());
-
         }
     }
 
