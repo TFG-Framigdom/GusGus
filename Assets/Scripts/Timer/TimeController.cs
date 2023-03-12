@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
+
 
 public class TimeController : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class TimeController : MonoBehaviour
 
     //Scriptable Object
     public LecturaFicheroSO lectura;
+
 
 
     void Start()
@@ -59,19 +62,34 @@ public class TimeController : MonoBehaviour
         if(player != null){
             player.SetActive(false);
         }
+        StopEnemigues();
         Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
-        if(tiempoRestante < 1)
-        {
-            tiempoRestanteInvertido = segundos;
+      if(tiempoRestante>segundos){
+            tiempoRestanteInvertido = 0;
+            tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                
+        }else{
+            tiempoRestanteInvertido = segundos - (int)tiempoRestante;
+            tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
         }
-        tiempoRestanteInvertido = segundos - (int)tiempoRestante;
-        tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
+        
     }
 
     public void StopTimer()
     {
         timerIsRunning = false;
+    }
+
+    void StopEnemigues(){
+        NavMeshAgent[] enemigos = FindObjectsOfType<NavMeshAgent>();
+        foreach (var enemigo in enemigos)
+        {
+            enemigo.isStopped = true;
+        }
+    }
+
+    public void ItemTimer(int tiempoItem){
+        tiempoRestante += tiempoItem;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class PaintScene : MonoBehaviour
 {
@@ -29,20 +30,18 @@ public class PaintScene : MonoBehaviour
     //Scriptable Object
     public LecturaFicheroSO lectura;
 
-    //JSON
-    public TextAsset jsonFile;
+    public LecturaFicheroItemsSO lecturaItems;
 
-
-    private MazeSettings settings;
-
-    public UnityEvent OnPlayerSpawned;
+    public UnityEvent OnCharactersSpawned;
     
+    private int[,] maze;
+
 
     void Awake()
     {
         dimensionX = lectura.TamañoX;
         dimensionY = lectura.TamañoY;
-        settings =  JSONReader.ReadMazeSettings(jsonFile.ToString());
+        maze = lectura.laberinto;
     }
 
     void Start()
@@ -51,6 +50,7 @@ public class PaintScene : MonoBehaviour
         AjustarCamara();
         CentrarCamara();
         CrearLaberinto();
+        PosicionamientoDeCharacters();
 
 
     }
@@ -88,7 +88,6 @@ public class PaintScene : MonoBehaviour
 
 
     public void CrearLaberinto(){
-        int[,] maze = settings.Convert2DArray();
         
         if(dimensionX == maze.GetLength(0) && dimensionY == maze.GetLength(1)){
             for (int filas = 0; filas < dimensionX; filas++)
@@ -96,26 +95,53 @@ public class PaintScene : MonoBehaviour
                 for (int columnas = 0; columnas < dimensionY; columnas++)
                 {
                     if(maze[filas,columnas] == 1){
+                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
                         laberinto.SetTile(new Vector3Int(columnas, dimensionX - filas - 1 , 0), tileLaberinto);
                     }
                     else if(maze[filas,columnas] == 3){
+                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
                         salida.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tileSalida);
-                    }
-                    else if(maze[filas,columnas] == 4){
-                        background.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tilePosicionInicial);
-                        lectura.posicionJugador = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
                     }
                     
                 }
             }
-            OnPlayerSpawned.Invoke();
         }
         else{
             Debug.Log("El tamaño del laberinto no coincide con el tamaño del mapa");
+            Debug.Log("Tamaño del mapa: " + dimensionX + "x" + dimensionY);
+            Debug.Log("Tamaño del laberinto: " + maze.GetLength(0) + "x" + maze.GetLength(1));
         }
     }
 
+    public void PosicionamientoDeCharacters(){
+        for (int filas = 0; filas < dimensionX; filas++)
+            {
+            for (int columnas = 0; columnas < dimensionY; columnas++)
+                {
+                    if(maze[filas,columnas] == 4){
+                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+                        background.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tilePosicionInicial);
+                        lectura.posicionJugador = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                    }else if(maze[filas,columnas]==52){
+                        //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+                        lectura.posicionEnemigoBasicos.Add(new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0));
+                        //lectura.posicionEnemigoBasico = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+
+                    }else if(maze[filas,columnas]==22){
+                        lecturaItems.posicionItemTiempo = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                        
+                    }else if(maze[filas,columnas]==21){
+                        lecturaItems.posicionItemVida = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                    }
+
+                }
+            }
+            //Instanciamos al jugador respecto a la posición que hemos guardado
+            OnCharactersSpawned.Invoke();
+        }
 
 
 
-}
+    }
+
+
