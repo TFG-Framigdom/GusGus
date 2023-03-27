@@ -62,6 +62,7 @@ public class BasicEnemyController : MonoBehaviour
             }
             yield return null;
         }
+        
 
         // Aquí ya se tiene el transform del jugador, se puede usar para realizar cualquier acción que necesite.
     }

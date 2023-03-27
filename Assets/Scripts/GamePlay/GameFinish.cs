@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 using UnityEngine.AI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
 
 
 public class GameFinish : MonoBehaviour
@@ -34,12 +36,14 @@ public class GameFinish : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.SetActive(false);
-            finalizarPartida.gameObject.SetActive(true);
+            //finalizarPartida.gameObject.SetActive(true);
             StopEnemigues();
 
-            tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
-            tiempo.StopTimer();
-            tiempo.tiempoInvertido();
+            // tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
+            // tiempo.StopTimer();
+            // tiempo.tiempoInvertido();
+            
+            TransicionDeScenes();
             Debug.Log("Game Finished");
         } 
         
@@ -55,6 +59,17 @@ public class GameFinish : MonoBehaviour
             enemigo.isStopped = true;
         }
     }
+
+    void TransicionDeScenes(){
+        if(SceneManager.GetActiveScene().name == "GamePlay"){
+            SceneManager.LoadScene(2);
+        }else if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
+            finalizarPartida.gameObject.SetActive(true);
+        }
+    }
+
+    
+
 
 }
 

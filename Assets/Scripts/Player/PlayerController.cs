@@ -76,7 +76,7 @@ public class  PlayerController : MonoBehaviour
 
         }else if(other.gameObject.tag == "ItemVida"){
             PlayerStadistic playerStadistics = FindObjectOfType<PlayerStadistic>();
-            playerStadistics.PlayerHeal();
+            playerStadistics.PlayerHealth();
             Destroy(other.gameObject);
         }
     }

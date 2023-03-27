@@ -3,60 +3,89 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerStadistic : MonoBehaviour
 {
     //public GameObject[] hearts;
-    private int life;
+    [SerializeField] private int life = 3;
 
-     //GameOver
+    //GameOver
     public RectTransform finalizarPartida;
     private TimeController tiempo;
 
     public RectTransform Vidas;
     public GameObject vidaExtra;
 
+    public UnityEvent<int> OnHeathUpdate;
+    
+
 
     void Start(){ 
-        life = Vidas.childCount;   
+        // if(SceneManager.GetActiveScene().name == "GamePlay"){          
+            
+        // }else{
+            
+        //     Debug.Log("Vidas: " + life);
+        //     PanelVidas();
+            
+        // }
+        OnHeathUpdate.Invoke(life);
+           
     }
 
-    void ChekLife(){
-        if(life<1){
-            //Game Over
-            Destroy(Vidas.GetChild(0).gameObject);
-            PlayerDeath();
+    // void PanelVidas(){
+    //     if(life == 1){
+    //         Destroy(Vidas.GetChild(1).gameObject);
+    //         Destroy(Vidas.GetChild(2).gameObject);
+    //     }else if(life == 2){
+    //         Destroy(Vidas.GetChild(2).gameObject);
+    //     }else if(life == 4){
+    //         GameObject newHeart = Instantiate(vidaExtra, Vidas.transform);
+    //         newHeart.transform.position = Vidas.GetChild(3).position + new Vector3(Vidas.GetChild(3).GetComponent<RectTransform>().rect.width, 0, 0);
+    //     }else{
+    //         life = Vidas.childCount;
+    //     }
+    // }
 
-        }else if(life<2){
-            Destroy(Vidas.GetChild(1).gameObject);
+    // void ChekLife(){
+    //     if(life<1){
+    //         //Game Over
+    //         Destroy(Vidas.GetChild(0).gameObject);
+    //         PlayerPrefs.SetInt("Vidas", life);
+    //         PlayerDeath();
 
-        }else if(life<3){
-            Destroy(Vidas.GetChild(2).gameObject);
+    //     }else if(life<2){
+    //         Destroy(Vidas.GetChild(1).gameObject);
+    //         PlayerPrefs.SetInt("Vidas", life);
 
-        }else if(life<4){
-            Destroy(Vidas.GetChild(3).gameObject);
-        }
-    }
 
-    public void PlayerHeal(){
-        Transform lastHeart = Vidas.transform.GetChild(Vidas.transform.childCount - 1);
-        GameObject newHeart = Instantiate(vidaExtra, Vidas.transform);
-        if(Vidas.childCount == 1){
-            newHeart.transform.position = lastHeart.position + new Vector3(Vidas.GetChild(0).GetComponent<RectTransform>().rect.width, 0, 0);
-        }else if(Vidas.childCount == 2){
-            newHeart.transform.position = lastHeart.position + new Vector3(Vidas.GetChild(1).GetComponent<RectTransform>().rect.width, 0, 0);
-        }else if(Vidas.childCount == 3){
-            newHeart.transform.position = lastHeart.position + new Vector3(Vidas.GetChild(2).GetComponent<RectTransform>().rect.width, 0, 0);
-        }else if(Vidas.childCount == 4){
-            newHeart.transform.position = lastHeart.position + new Vector3(Vidas.GetChild(3).GetComponent<RectTransform>().rect.width, 0, 0);
-        }
+    //     }else if(life<3){
+    //         Destroy(Vidas.GetChild(2).gameObject);
+    //         PlayerPrefs.SetInt("Vidas", life);
+
+
+    //     }else if(life<4){
+    //         Destroy(Vidas.GetChild(3).gameObject);
+    //         PlayerPrefs.SetInt("Vidas", life);
+
+    //     }
+    // }
+
+    public void PlayerHealth(){
         life++;
-
+        OnHeathUpdate.Invoke(life);
     }
 
     public void PlayerDamage(){
-        life--;
-        ChekLife();
+        if(life == 0){
+            PlayerDeath();
+        }else{
+            life--;
+            OnHeathUpdate.Invoke(life);
+        }
+       
     }
 
     public void PlayerDeath(){

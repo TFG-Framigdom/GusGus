@@ -7,6 +7,4 @@ public class LecturaFicheroItemsSO : ScriptableObject
 
     [SerializeField] public Vector3 posicionItemVida;
 
-
-
 }
