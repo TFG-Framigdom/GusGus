@@ -15,63 +15,23 @@ public class PlayerStadistic : MonoBehaviour
     public RectTransform finalizarPartida;
     private TimeController tiempo;
 
-    public RectTransform Vidas;
-    public GameObject vidaExtra;
-
     public UnityEvent<int> OnHeathUpdate;
     
 
 
     void Start(){ 
-        // if(SceneManager.GetActiveScene().name == "GamePlay"){          
+        if(SceneManager.GetActiveScene().name == "GamePlay"){
+            OnHeathUpdate.Invoke(life);          
+        }else{
+            life = PlayerPrefs.GetInt("Vidas");
+            OnHeathUpdate.Invoke(life);
             
-        // }else{
-            
-        //     Debug.Log("Vidas: " + life);
-        //     PanelVidas();
-            
-        // }
-        OnHeathUpdate.Invoke(life);
+        }
            
     }
 
-    // void PanelVidas(){
-    //     if(life == 1){
-    //         Destroy(Vidas.GetChild(1).gameObject);
-    //         Destroy(Vidas.GetChild(2).gameObject);
-    //     }else if(life == 2){
-    //         Destroy(Vidas.GetChild(2).gameObject);
-    //     }else if(life == 4){
-    //         GameObject newHeart = Instantiate(vidaExtra, Vidas.transform);
-    //         newHeart.transform.position = Vidas.GetChild(3).position + new Vector3(Vidas.GetChild(3).GetComponent<RectTransform>().rect.width, 0, 0);
-    //     }else{
-    //         life = Vidas.childCount;
-    //     }
-    // }
-
-    // void ChekLife(){
-    //     if(life<1){
-    //         //Game Over
-    //         Destroy(Vidas.GetChild(0).gameObject);
-    //         PlayerPrefs.SetInt("Vidas", life);
-    //         PlayerDeath();
-
-    //     }else if(life<2){
-    //         Destroy(Vidas.GetChild(1).gameObject);
-    //         PlayerPrefs.SetInt("Vidas", life);
 
 
-    //     }else if(life<3){
-    //         Destroy(Vidas.GetChild(2).gameObject);
-    //         PlayerPrefs.SetInt("Vidas", life);
-
-
-    //     }else if(life<4){
-    //         Destroy(Vidas.GetChild(3).gameObject);
-    //         PlayerPrefs.SetInt("Vidas", life);
-
-    //     }
-    // }
 
     public void PlayerHealth(){
         life++;
@@ -79,8 +39,10 @@ public class PlayerStadistic : MonoBehaviour
     }
 
     public void PlayerDamage(){
-        if(life == 0){
+        if(life == 1){
             PlayerDeath();
+            life--;
+            OnHeathUpdate.Invoke(life);
         }else{
             life--;
             OnHeathUpdate.Invoke(life);

@@ -63,6 +63,7 @@ public class PaintScene : MonoBehaviour
         }
         else if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
             maze = lectura.laberintoLevel2;
+
             GenerarMapa();
             AjustarCamara();
             CentrarCamara();
