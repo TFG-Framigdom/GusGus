@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lecturaItems: {fileID: 11400000, guid: cd24e80faff2a5e4bad082c0c0133431, type: 2}
+  itemTiempo: {fileID: 8722865959849077908, guid: f24307eb15803814ab6266f9af369a7a, type: 3}
+  itemVida: {fileID: 3955947237561421242}
 --- !u!95 &3955947237561421238
 Animator:
   serializedVersion: 3

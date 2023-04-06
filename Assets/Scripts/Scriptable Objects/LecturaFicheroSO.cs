@@ -6,6 +6,8 @@ public class LecturaFicheroSO : ScriptableObject
 {
     [SerializeField] public int tiempo;
 
+    [SerializeField] public float tiempoRestante;
+
     [SerializeField] public int TamañoX;
 
     [SerializeField] public int TamañoY;

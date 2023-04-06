@@ -158,6 +158,7 @@ public class PaintScene : MonoBehaviour
                         
                     }else if(maze[filas,columnas]==21){
                         lecturaItems.posicionItemVida = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                        Debug.Log("Posicion Item Vida: " + lecturaItems.posicionItemVida);
                     }
 
                 }

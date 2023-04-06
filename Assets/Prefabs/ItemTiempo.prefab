@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lecturaItems: {fileID: 11400000, guid: cd24e80faff2a5e4bad082c0c0133431, type: 2}
+  itemTiempo: {fileID: 8722865959849077908}
+  itemVida: {fileID: 3955947237561421242, guid: 6381b9f7d258f7548b3070269a135ac1, type: 3}
 --- !u!95 &8722865959849077898
 Animator:
   serializedVersion: 3

@@ -9,21 +9,24 @@ using UnityEngine.Events;
 public class PlayerStadistic : MonoBehaviour
 {
     //public GameObject[] hearts;
-    [SerializeField] private int life = 3;
+    public int life = 3;
 
     //GameOver
     public RectTransform finalizarPartida;
     private TimeController tiempo;
 
     public UnityEvent<int> OnHeathUpdate;
+
+    public LecturaFicheroItemsSO lecturaItems;
+
     
 
 
     void Start(){ 
         if(SceneManager.GetActiveScene().name == "GamePlay"){
-            OnHeathUpdate.Invoke(life);          
+            OnHeathUpdate.Invoke(life);
         }else{
-            life = PlayerPrefs.GetInt("Vidas");
+            life = lecturaItems.vidaPlayer;
             OnHeathUpdate.Invoke(life);
             
         }

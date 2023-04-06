@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 
 public class TimeController : MonoBehaviour
@@ -13,7 +14,7 @@ public class TimeController : MonoBehaviour
     [SerializeField] Text tiempo;
     [SerializeField] Text tiempoInvert;
 
-    private float tiempoRestante;
+    public float tiempoRestante;
     private bool timerIsRunning = false;
 
     private int tiempoRestanteInvertido;
@@ -26,13 +27,24 @@ public class TimeController : MonoBehaviour
     //Scriptable Object
     public LecturaFicheroSO lectura;
 
+    private int segundosPartida;
+
 
 
     void Start()
     {
-        segundos = lectura.tiempo;
-        tiempoRestante = segundos;
-        timerIsRunning = true;
+        segundosPartida = lectura.tiempo;
+        if(SceneManager.GetActiveScene().name == "GamePlay"){
+            segundos = lectura.tiempo;
+            tiempoRestante = segundos;
+            timerIsRunning = true;
+        }else{
+            segundos = (int)lectura.tiempoRestante;
+            tiempoRestante = segundos;
+            timerIsRunning = true;
+        }
+
+        
     }
 
     // Update is called once per frame
@@ -41,6 +53,7 @@ public class TimeController : MonoBehaviour
         if(timerIsRunning)
         {
             tiempoRestante -= Time.deltaTime;
+            lectura.tiempoRestante = tiempoRestante;
             if(tiempoRestante < 1){
                 finalizarPartida.gameObject.SetActive(true);
                 tiempoInvertido();
@@ -66,13 +79,15 @@ public class TimeController : MonoBehaviour
         Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
-      if(tiempoRestante>segundos){
-            tiempoRestanteInvertido = 0;
+      if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
+        if(tiempoRestante>segundosPartida){
+            //tiempoRestanteInvertido = 0;
             tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                
         }else{
-            tiempoRestanteInvertido = segundos - (int)tiempoRestante;
+            tiempoRestanteInvertido = segundosPartida - (int)tiempoRestante;
             tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
         }
+      }
         
     }
 

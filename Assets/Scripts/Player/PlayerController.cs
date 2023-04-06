@@ -15,6 +15,7 @@ public class  PlayerController : MonoBehaviour
 
     public GameObject player;
     private bool vulnerable = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -70,7 +71,7 @@ public class  PlayerController : MonoBehaviour
             
         }else if(other.gameObject.tag == "ItemTiempo"){
             TimeController tiempo =  FindObjectOfType<TimeController>();
-            tiempo.ItemTimer(30);
+            tiempo.ItemTimer(10);
             
             Destroy(other.gameObject);
 
@@ -89,8 +90,6 @@ public class  PlayerController : MonoBehaviour
     }
 
     public void PlayerSpawner(){
-        Debug.Log("peneeee"+ lectura.posicionJugador);
         player.transform.position = lectura.posicionJugador;
-        Debug.Log("peneee2"+ player.transform.position);
     }
 }
