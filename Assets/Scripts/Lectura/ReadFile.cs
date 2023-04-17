@@ -28,9 +28,12 @@ public class ReadFile : MonoBehaviour
         lectura.TamañoY = settings.Tamano[1];
         int[,] mazeValido = settings.CheckMazeBorders(settings.Laberinto);
         int[,] mazeValidoLevel2 = settings.CheckMazeBorders(settings.LaberintoLevel2);
+        int[,] mazeValidoLevel3 = settings.CheckMazeBorders(settings.LaberintoLevel3);
         
         lectura.laberinto = mazeValido;
         lectura.laberintoLevel2 = mazeValidoLevel2;
+        lectura.laberintoLevel3 = mazeValidoLevel3;
+        
 
     }
 

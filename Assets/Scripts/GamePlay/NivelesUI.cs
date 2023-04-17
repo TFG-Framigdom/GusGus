@@ -15,6 +15,8 @@ public class NivelesUI : MonoBehaviour
             nivel.text = "Nivel 1";
         }else if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
             nivel.text = "Nivel 2";
+        }else if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
+            nivel.text = "Nivel 3";
         }
     }
 }

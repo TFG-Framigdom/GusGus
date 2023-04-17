@@ -47,8 +47,6 @@ public class PaintScene : MonoBehaviour
         dimensionX = lectura.TamañoX;
         dimensionY = lectura.TamañoY;
         maze = lectura.laberinto;
-        //mazeLevel2 = lectura.laberintoLevel2;
-        //laberintoLevel2.transform.position = new Vector3(10f, 0, 0);
     }
 
     void Start()
@@ -70,8 +68,16 @@ public class PaintScene : MonoBehaviour
             CrearLaberinto();
             PosicionamientoDeCharacters();
 
-        }
-        else{
+        }else if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
+            maze = lectura.laberintoLevel3;
+
+            GenerarMapa();
+            AjustarCamara();
+            CentrarCamara();
+            CrearLaberinto();
+            PosicionamientoDeCharacters();
+
+        }else{
             Debug.Log("No se ha podido cargar el nivel");
         }
         

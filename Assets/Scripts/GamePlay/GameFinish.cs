@@ -29,7 +29,7 @@ public class GameFinish : MonoBehaviour
     void Start()
     {
         lectura.posicionEnemigoBasicos.Clear();
-
+        
 
     }
 
@@ -43,9 +43,6 @@ public class GameFinish : MonoBehaviour
             collision.gameObject.SetActive(false);
             StopEnemigues();
             tiempoPartida();
-            // tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
-            // tiempo.StopTimer();
-            // tiempo.tiempoInvertido();
             TransicionDeScenes();
             Debug.Log("Game Finished");
         } 
@@ -54,7 +51,7 @@ public class GameFinish : MonoBehaviour
     }
 
     void tiempoPartida(){
-        if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
+        if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
             tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
             tiempo.StopTimer();
             tiempo.tiempoInvertido();
@@ -75,6 +72,8 @@ public class GameFinish : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "GamePlay"){
             SceneManager.LoadScene(2);
         }else if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
+            SceneManager.LoadScene(3);
+        }else if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
             finalizarPartida.gameObject.SetActive(true);
         }
     }

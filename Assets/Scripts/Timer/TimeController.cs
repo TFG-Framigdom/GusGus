@@ -79,7 +79,7 @@ public class TimeController : MonoBehaviour
         Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
-      if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
+      if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
         if(tiempoRestante>segundosPartida){
             //tiempoRestanteInvertido = 0;
             tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                

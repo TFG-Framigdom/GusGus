@@ -6,6 +6,7 @@ public class MazeSettings
     public int Tiempo;
     public int[] Laberinto;
     public int[] LaberintoLevel2;  
+    public int[] LaberintoLevel3;
 
     //Convierte el array de 1D a 2D
     public int[,] Convert2DArray(int[] laberinto)
