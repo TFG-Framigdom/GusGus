@@ -24,6 +24,8 @@ public class LecturaFicheroSO : ScriptableObject
 
     [SerializeField] public Vector3 posicionEnemigoBasico;
 
+    //[SerializeField] public List<int> laberintoAleatorio;
+
 
 
 

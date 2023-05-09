@@ -1008,6 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonFile: {fileID: 4900000, guid: 9a73a9bb1e3ade445b226ecf0aecc87b, type: 3}
   lectura: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
+  mazeAleatorio: {fileID: 11400000, guid: e52ab7ea3dcf1f94fbb996246a8f0205, type: 2}
 --- !u!114 &919165269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,6 +1420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51304b700b5c2f3478b11b30626ed26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mazeAleatorio: {fileID: 11400000, guid: e52ab7ea3dcf1f94fbb996246a8f0205, type: 2}
 --- !u!1 &957993480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,6 +2243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonFile: {fileID: 4900000, guid: 29829304ec98c9d479fc8f39a43760f1, type: 3}
   lectura: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
+  mazeAleatorio: {fileID: 11400000, guid: e52ab7ea3dcf1f94fbb996246a8f0205, type: 2}
 --- !u!114 &1441618515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2933,8 +2936,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d78c1ce05f88e54d944d8d205010a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: {fileID: 4900000, guid: 0f5e064a40826b04f859eaf8b51d9a3b, type: 3}
+  jsonFile: {fileID: 4900000, guid: d9d8d3445bec5c64d9ae7d2d2269ffa8, type: 3}
   lectura: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
+  mazeAleatorio: {fileID: 11400000, guid: e52ab7ea3dcf1f94fbb996246a8f0205, type: 2}
 --- !u!114 &1954304072
 MonoBehaviour:
   m_ObjectHideFlags: 0

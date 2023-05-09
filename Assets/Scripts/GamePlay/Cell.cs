@@ -15,11 +15,10 @@ public class Cell
     public bool northCell = true;
     public bool southCell = true;
 
-    public Cell(int x, int y){
+    public Cell(int x , int y){
         this.x = x;
         this.y = y;
         this.value = 1;
-
     }
 
     

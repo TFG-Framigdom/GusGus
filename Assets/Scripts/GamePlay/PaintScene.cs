@@ -35,6 +35,8 @@ public class PaintScene : MonoBehaviour
 
     public LecturaFicheroItemsSO lecturaItems;
 
+    public MazeAleatorioSO mazeAleatorio;
+
     public UnityEvent OnCharactersSpawned;
     
     private int[,] maze;
