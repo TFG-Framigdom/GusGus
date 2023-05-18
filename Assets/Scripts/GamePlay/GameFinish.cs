@@ -1,10 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Tilemaps;
 using UnityEngine.AI;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 
 
 
@@ -13,6 +9,9 @@ public class GameFinish : MonoBehaviour
     //GameOver
     public RectTransform finalizarPartida;
 
+    public RectTransform niveles;
+
+    public RectTransform panelPuntos;
     
 
     //Tiempo
@@ -22,13 +21,14 @@ public class GameFinish : MonoBehaviour
 
     public LecturaFicheroItemsSO lecturaItems;
     
-    private float tiempoEscena;
 
 
 
     void Start()
     {
+        tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
         lectura.posicionEnemigoBasicos.Clear();
+        lecturaItems.posicionItemPuntos.Clear();
         
 
     }
@@ -44,6 +44,8 @@ public class GameFinish : MonoBehaviour
             StopEnemigues();
             tiempoPartida();
             TransicionDeScenes();
+            OcultarPanel();
+            PercentajePoints();
             Debug.Log("Game Finished");
         } 
         
@@ -52,7 +54,6 @@ public class GameFinish : MonoBehaviour
 
     void tiempoPartida(){
         if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
-            tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
             tiempo.StopTimer();
             tiempo.tiempoInvertido();
         }
@@ -83,6 +84,13 @@ public class GameFinish : MonoBehaviour
         lecturaItems.vidaPlayer = vida;
     }
 
+    void OcultarPanel(){
+        panelPuntos.gameObject.SetActive(false);
+        niveles.gameObject.SetActive(false);
+    }
 
+    void PercentajePoints(){
+        tiempo.PercentajePointsAboutTime();
+    }
 }
 

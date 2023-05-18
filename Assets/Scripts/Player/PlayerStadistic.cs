@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
@@ -60,6 +57,9 @@ public class PlayerStadistic : MonoBehaviour
         tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
         tiempo.StopTimer();
         tiempo.tiempoInvertido();
+        PointController puntos = FindObjectOfType<PointController>();
+        puntos.ResetPoint();
+
     }
 
     void DestroyEnemigues(){
@@ -69,6 +69,7 @@ public class PlayerStadistic : MonoBehaviour
             Destroy(enemigo.gameObject);
         }
     }
+
 
 
 }

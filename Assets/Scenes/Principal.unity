@@ -1237,7 +1237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &933121802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1381,7 +1381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &954135237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,6 +1434,7 @@ GameObject:
   - component: {fileID: 957993484}
   - component: {fileID: 957993483}
   - component: {fileID: 957993482}
+  - component: {fileID: 957993486}
   m_Layer: 5
   m_Name: ButtonQuit
   m_TagString: Untagged
@@ -1523,7 +1524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 957993484}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 957993486}
+        m_TargetAssemblyTypeName: LogicaMenu, Assembly-CSharp
+        m_MethodName: ConfiguracionMenuExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &957993484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,6 +1575,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957993480}
   m_CullTransparentMesh: 1
+--- !u!114 &957993486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957993480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776ca1ed720b65947900d2eb517a33dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartMenu: {fileID: 753110719}
+  CargarFicheros: {fileID: 1879035101}
 --- !u!1 &1044658272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,8 +1791,8 @@ Canvas:
   m_GameObject: {fileID: 1077025591}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1623442400}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2936,7 +2963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d78c1ce05f88e54d944d8d205010a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: {fileID: 4900000, guid: d9d8d3445bec5c64d9ae7d2d2269ffa8, type: 3}
+  jsonFile: {fileID: 4900000, guid: 0f5e064a40826b04f859eaf8b51d9a3b, type: 3}
   lectura: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
   mazeAleatorio: {fileID: 11400000, guid: e52ab7ea3dcf1f94fbb996246a8f0205, type: 2}
 --- !u!114 &1954304072
@@ -3205,7 +3232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -24}
+  m_AnchoredPosition: {x: 0, y: -24}
   m_SizeDelta: {x: 168.696, y: 48.0003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2052260282

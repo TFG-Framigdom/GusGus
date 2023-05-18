@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class  PlayerController : MonoBehaviour
@@ -20,7 +19,7 @@ public class  PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         tiempoMov = 0f;
-        PlayerSpawner();
+        //PlayerSpawner();
     }
 
     // Update is called once per frame
@@ -79,6 +78,11 @@ public class  PlayerController : MonoBehaviour
             PlayerStadistic playerStadistics = FindObjectOfType<PlayerStadistic>();
             playerStadistics.PlayerHealth();
             Destroy(other.gameObject);
+
+        }else if(other.gameObject.tag == "ItemPunto"){
+            PointController puntos = FindObjectOfType<PointController>();
+            puntos.SumarPuntos(10);
+            Destroy(other.gameObject);
         }
     }
 
@@ -90,6 +94,10 @@ public class  PlayerController : MonoBehaviour
     }
 
     public void PlayerSpawner(){
-        player.transform.position = lectura.posicionJugador;
+        if(player.transform.position != lectura.posicionJugador)
+        {
+            player.transform.position = lectura.posicionJugador;
+        }
+        Debug.Log(player.transform.position + " --------------------------");
     }
 }

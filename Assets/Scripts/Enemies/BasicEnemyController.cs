@@ -114,7 +114,7 @@ public class BasicEnemyController : MonoBehaviour
         }
     }
 
-    void ReadyEnemigues(){
+    public void ReadyEnemigues(){
         NavMeshAgent[] enemigos = FindObjectsOfType<NavMeshAgent>();
         foreach (var enemigo in enemigos)
         {

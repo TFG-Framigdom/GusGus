@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 
@@ -20,6 +17,7 @@ public class PaintScene : MonoBehaviour
     public TileBase tileLaberinto;
     public TileBase tileSalida;
     public TileBase tilePosicionInicial;
+    public TileBase tilePuntoExtra;
     
 
     private int dimensionX;
@@ -34,8 +32,6 @@ public class PaintScene : MonoBehaviour
     public LecturaFicheroSO lectura;
 
     public LecturaFicheroItemsSO lecturaItems;
-
-    public MazeAleatorioSO mazeAleatorio;
 
     public UnityEvent OnCharactersSpawned;
     
@@ -166,7 +162,8 @@ public class PaintScene : MonoBehaviour
                         
                     }else if(maze[filas,columnas]==21){
                         lecturaItems.posicionItemVida = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
-                        Debug.Log("Posicion Item Vida: " + lecturaItems.posicionItemVida);
+                    }else if(maze[filas,columnas]==23){
+                        lecturaItems.posicionItemPuntos.Add(new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0));
                     }
 
                 }

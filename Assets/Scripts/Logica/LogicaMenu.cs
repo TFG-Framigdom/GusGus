@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +12,6 @@ public class LogicaMenu : MonoBehaviour
     public RectTransform CargarFicheros;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        if(button.name == "ButtonPlay"){
-            button.onClick.AddListener(ConfiguracionMenuPlay);
-        }
-        else if(button.name == "ButtonVolver")
-        {
-            button.onClick.AddListener(ConfiguracionMenuVolver);
-        }
-        
-    }
 
     public void ConfiguracionMenuPlay()
     {
@@ -37,6 +24,11 @@ public class LogicaMenu : MonoBehaviour
     {
         StartMenu.gameObject.SetActive(true);
         CargarFicheros.gameObject.SetActive(false);
+    }
+
+    public void ConfiguracionMenuExit()
+    {
+        Application.Quit();
     }
 
 }

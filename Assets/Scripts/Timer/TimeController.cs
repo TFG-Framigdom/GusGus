@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
@@ -13,6 +11,8 @@ public class TimeController : MonoBehaviour
     public int segundos;
     [SerializeField] Text tiempo;
     [SerializeField] Text tiempoInvert;
+    [SerializeField] Text puntos;
+    [SerializeField] Text puntosExtra;
 
     public float tiempoRestante;
     private bool timerIsRunning = false;
@@ -29,10 +29,14 @@ public class TimeController : MonoBehaviour
 
     private int segundosPartida;
 
+    private PointController puntosPantalla;
+
+
 
 
     void Start()
     {
+        puntosPantalla = FindObjectOfType<PointController>();
         segundosPartida = lectura.tiempo;
         if(SceneManager.GetActiveScene().name == "GamePlay"){
             segundos = lectura.tiempo;
@@ -54,14 +58,17 @@ public class TimeController : MonoBehaviour
         {
             tiempoRestante -= Time.deltaTime;
             lectura.tiempoRestante = tiempoRestante;
-            if(tiempoRestante < 1){
+            if (tiempoRestante < 1){
                 finalizarPartida.gameObject.SetActive(true);
+                PercentajePointsAboutTime();
                 tiempoInvertido();
                 OnDisable();
+                puntosPantalla.ResetPoint();
                 
             }
 
             tiempo.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestante / 60), tiempoRestante % 60);
+            
         }
         else
         {
@@ -82,10 +89,10 @@ public class TimeController : MonoBehaviour
       if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
         if(tiempoRestante>segundosPartida){
             //tiempoRestanteInvertido = 0;
-            tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                
+            tiempoInvert.text =  "Timepo Logrado en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                
         }else{
             tiempoRestanteInvertido = segundosPartida - (int)tiempoRestante;
-            tiempoInvert.text = string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
+            tiempoInvert.text = "Timepo Logrado en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
         }
       }
         
@@ -94,6 +101,11 @@ public class TimeController : MonoBehaviour
     public void StopTimer()
     {
         timerIsRunning = false;
+    }
+
+    public void ResumeTimer()
+    {
+        timerIsRunning = true;
     }
 
     void StopEnemigues(){
@@ -107,4 +119,14 @@ public class TimeController : MonoBehaviour
     public void ItemTimer(int tiempoItem){
         tiempoRestante += tiempoItem;
     }
+
+    public void PercentajePointsAboutTime(){
+        int puntosTimer = (int)tiempoRestante * 100 / segundosPartida;
+        puntosExtra.text = "Puntos Extra: " + puntosTimer;
+        puntosPantalla.SumarPuntos(puntosTimer);
+        puntos.text = "Puntos Totales: " + puntosPantalla.puntos;
+    }
+
+
+
 }
