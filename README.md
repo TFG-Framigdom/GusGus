@@ -25,13 +25,26 @@ Como podemos obervar las llaves que abren y cierran son muy importantes sino no 
 
  1 - Paredes del Laberinto
  0 - Caminos del Laberinto (El jugador podrá pasar por estos caminos)
-
+ 4 - Posicion inicial del jugador
+ 3 - Salida del laberinto
+ 21 - Item de vida
+ 22 - Item de tiempo
+ 23 - Item de puntos
+ 52 - Enemigo
+ 
 ```
 
+De momento estos valores son los que se reconocen en la lista, si pones otro valor lo reconocerá como 0. En el ejemplo se puede observar que si pones un 2 que no esta contemplado en los valores mencionados, en pantalla te devolverá un 0. Algunas cosas importantes:
+
+- La salida debe estar en los bordes del laberinto y solo puede haber una salida.
+- Los bordes del laberinto obviamente deben estar a 1. 
+- Los item de vida y tiempo solo puede haber 1 por laberinto.
+- Los item de puntos y enemigos puede haber todo los que quieras.
+
+Si no se tienen en cuenta estos comentarios seguramente salgan fallos que de primeras no se sepa porque puede ser.
 
 
-
-Muy importante que al crear el JSON, se haga con los mismos nombres que los atributos y con una estructura básicamente muy similar al ejemplo con tan solo tengas que cambiar los valores, ya que sino sera muy tedioso por que devolverá errores la aplicación.Dejo el ejemplo de antes, accesible para mayor comodidad al copiar y reestructurar valores:
+Por último y no menos importante, al crear el JSON, se haga con los mismos nombres que los atributos y con una estructura básicamente muy similar al ejemplo con tan solo tengas que cambiar los valores, ya que sino sera muy tedioso por que devolverá errores la aplicación. Dejo el ejemplo de antes, accesible para mayor comodidad al copiar y reestructurar valores (Importante las llaves al principio y al final):
 
 {
 
@@ -64,3 +77,5 @@ Muy importante que al crear el JSON, se haga con los mismos nombres que los atri
                                              
 
 }
+
+Sabido esto, a disfrutar. :)
