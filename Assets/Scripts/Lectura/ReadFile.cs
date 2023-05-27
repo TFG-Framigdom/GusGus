@@ -16,14 +16,16 @@ public class ReadFile : MonoBehaviour
 
     void Start()
     {
-        WriteJSON("Assets/Files/JSON.json");
+        //WriteJSON("Assets/Files/JSON.json");
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(ReadTextJSON);
         //WriteJSON("Assets/Files/JSON.json");
         
     }
-    void ReadTextJSON(){ 
+    public void ReadTextJSON(){ 
         //Cambiar la forma de leer el archivo
         MazeSettings settings =  JsonUtility.FromJson<MazeSettings>(jsonFile.text);
+        //Debug.Log(settings.Tamano[0] + "---------------------" +  settings.Tamano[1]);
         lectura.tiempo = settings.Tiempo;
         lectura.TamañoX = settings.Tamano[0];
         lectura.TamañoY = settings.Tamano[1];
@@ -40,6 +42,7 @@ public class ReadFile : MonoBehaviour
 
     }
 
+    //MazeAleatorioSO
     public void WriteJSON(string filePath)
     {
         List<int> mazeData = mazeAleatorio.laberintoAleatorio;

@@ -11,13 +11,23 @@ public class LogicaMenu : MonoBehaviour
  
     public RectTransform CargarFicheros;
 
+    public RectTransform ChooseLevel;
+
+    public RectTransform AlertaCrearLaberinto;
+
     // Start is called before the first frame update
 
     public void ConfiguracionMenuPlay()
     {
         StartMenu.gameObject.SetActive(false);
-        CargarFicheros.gameObject.SetActive(true);
+        ChooseLevel.gameObject.SetActive(true);
+        //CargarFicheros.gameObject.SetActive(true);
+    }
 
+    public void ConfiguracionMenuCargar()
+    {
+        ChooseLevel.gameObject.SetActive(false);
+        CargarFicheros.gameObject.SetActive(true);
     }
 
     public void ConfiguracionMenuVolver()
@@ -29,6 +39,13 @@ public class LogicaMenu : MonoBehaviour
     public void ConfiguracionMenuExit()
     {
         Application.Quit();
+    }
+
+    public void ConfiguracionAlertaCrearLaberinto()
+    {
+        ChooseLevel.gameObject.SetActive(false);
+        AlertaCrearLaberinto.gameObject.SetActive(true);
+        
     }
 
 }
