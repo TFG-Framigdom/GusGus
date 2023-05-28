@@ -2472,7 +2472,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xA1Enhorabuena! Lo conseguiste\n"
+  m_Text: 'El Juego ha terminado...
+
+'
 --- !u!222 &1017303596
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9618,6 +9620,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1012741671}
     - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: lecturaItems
+      value: 
+      objectReference: {fileID: 11400000, guid: cd24e80faff2a5e4bad082c0c0133431, type: 2}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
       propertyPath: tiempoInvert
       value: 
       objectReference: {fileID: 2061207823}
@@ -9625,6 +9631,34 @@ PrefabInstance:
       propertyPath: finalizarPartida
       value: 
       objectReference: {fileID: 766449963}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: OnPointUpdate.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: OnPointUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: OnPointUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5871849134303085031}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: OnPointUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: OnPointUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: OnPointUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerStadistic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187576168354401613, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
+      propertyPath: OnPointUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb50fc7adeb105a4c861489f9de30c63, type: 3}
 --- !u!1001 &5871849134303085029
@@ -9701,6 +9735,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04da5348a6d1c6f40b8e2e979644fcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5871849134303085031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5871849132828916500, guid: c87d0635852a43b42b802ae681d8c422, type: 3}
+  m_PrefabInstance: {fileID: 5871849134303085029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747057392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c990ab53bd8ab14a8d63054f0f44e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6500517510916211115

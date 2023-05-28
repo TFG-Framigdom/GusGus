@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 
 public class TimeController : MonoBehaviour
@@ -27,9 +28,11 @@ public class TimeController : MonoBehaviour
     //Scriptable Object
     public LecturaFicheroSO lectura;
 
+
     private int segundosPartida;
 
     private PointController puntosPantalla;
+
 
 
 
@@ -86,7 +89,6 @@ public class TimeController : MonoBehaviour
         Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
-      if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
         if(tiempoRestante>segundosPartida){
             //tiempoRestanteInvertido = 0;
             tiempoInvert.text =  "Timepo Logrado en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                
@@ -94,7 +96,6 @@ public class TimeController : MonoBehaviour
             tiempoRestanteInvertido = segundosPartida - (int)tiempoRestante;
             tiempoInvert.text = "Timepo Logrado en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
         }
-      }
         
     }
 
@@ -124,6 +125,13 @@ public class TimeController : MonoBehaviour
         int puntosTimer = (int)tiempoRestante * 100 / segundosPartida;
         puntosExtra.text = "Puntos Extra: " + puntosTimer;
         puntosPantalla.SumarPuntos(puntosTimer);
+        puntos.text = "Puntos Totales: " + puntosPantalla.puntos;
+        
+    }
+
+    public void PercentajePointAbouTimePlayerDeath(){
+        puntosExtra.text = "Puntos Extra: 0";
+        puntosPantalla.SumarPuntos(0);
         puntos.text = "Puntos Totales: " + puntosPantalla.puntos;
     }
 

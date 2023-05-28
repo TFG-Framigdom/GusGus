@@ -2215,7 +2215,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xA1Enhorabuena! Lo conseguiste\n"
+  m_Text: 'El Juego ha terminado...
+
+'
 --- !u!222 &779955959
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2892,6 +2894,7 @@ MonoBehaviour:
   finalizarPartida: {fileID: 1186782574}
   player: {fileID: 1547767109}
   lectura: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
+  lecturaItems: {fileID: 11400000, guid: cd24e80faff2a5e4bad082c0c0133431, type: 2}
 --- !u!114 &1190606229
 MonoBehaviour:
   m_ObjectHideFlags: 0
