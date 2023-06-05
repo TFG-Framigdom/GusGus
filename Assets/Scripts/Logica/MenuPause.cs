@@ -19,15 +19,20 @@ public class MenuPause : MonoBehaviour
     public void PauseGame(){
         menuPause.gameObject.SetActive(true);
         tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
-        tiempo.StopTimer();
-
         enemigos = FindObjectOfType<BasicEnemyController>();
-        enemigos.StopEnemigues();
-
         puntos = FindObjectOfType<PointController>();
-        puntos.StopPoint();
-
-        player.GetComponent<PlayerController>().enabled = false;
+        if(enemigos != null ){
+            tiempo.StopTimer();
+            enemigos.StopEnemigues();
+            puntos.StopPoint();
+            player.GetComponent<PlayerController>().enabled = false;
+        }else{
+            tiempo.StopTimer();
+            puntos.StopPoint();
+            player.GetComponent<PlayerController>().enabled = false;
+        }
+        
+        
 
     }
 
@@ -41,15 +46,18 @@ public class MenuPause : MonoBehaviour
     public void ResumeGame(){
         menuPause.gameObject.SetActive(false);
         tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
-        tiempo.ResumeTimer();
-
         enemigos = FindObjectOfType<BasicEnemyController>();
-        enemigos.ReadyEnemigues();
-
         puntos = FindObjectOfType<PointController>();
-        puntos.ResumePoint();
-
-        player.GetComponent<PlayerController>().enabled = true;
+        if(enemigos != null ){
+            tiempo.ResumeTimer();
+            enemigos.ReadyEnemigues();
+            puntos.ResumePoint();
+            player.GetComponent<PlayerController>().enabled = true; 
+        }else{
+            tiempo.ResumeTimer();
+            puntos.ResumePoint();
+            player.GetComponent<PlayerController>().enabled = true; 
+        }
     }
 
 

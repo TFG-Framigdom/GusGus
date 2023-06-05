@@ -60,7 +60,8 @@ public class FileBrowserClass : MonoBehaviour
                jsonData.ContainsKey("LaberintoLevel2") &&
                jsonData.ContainsKey("LaberintoLevel3"))
            {
-               if(settings.Tamano.Length == 2 && settings.Tamano[0] == settings.Tamano[1]
+               if(settings.Tamano.Length == 2 && settings.Tamano[0] >= 4 && settings.Tamano[1] >= 4
+                && settings.Tamano[0] == settings.Tamano[1]
                && settings.Tiempo > 0 
                && settings.Laberinto.Length == settings.Tamano[0] * settings.Tamano[1]
                && settings.LaberintoLevel2.Length == settings.Tamano[0] * settings.Tamano[1]

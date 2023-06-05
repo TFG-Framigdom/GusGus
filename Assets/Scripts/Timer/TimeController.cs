@@ -17,6 +17,7 @@ public class TimeController : MonoBehaviour
 
     public float tiempoRestante;
     private bool timerIsRunning = false;
+    private int tiempoSobrante;
 
     private int tiempoRestanteInvertido;
     
@@ -63,8 +64,8 @@ public class TimeController : MonoBehaviour
             lectura.tiempoRestante = tiempoRestante;
             if (tiempoRestante < 1){
                 finalizarPartida.gameObject.SetActive(true);
+                tiempoInvert.text = "Tiempo Finalizado";
                 PercentajePointsAboutTime();
-                tiempoInvertido();
                 OnDisable();
                 puntosPantalla.ResetPoint();
                 
@@ -89,12 +90,14 @@ public class TimeController : MonoBehaviour
         Debug.Log("Time's up!");
     }
     public void tiempoInvertido(){
+
         if(tiempoRestante>segundosPartida){
             //tiempoRestanteInvertido = 0;
-            tiempoInvert.text =  "Timepo Logrado en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);                
+            tiempoSobrante = (int)tiempoRestante - segundosPartida;
+            tiempoInvert.text =  "Tiempo Sobrante en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoSobrante / 60), tiempoSobrante % 60);                
         }else{
             tiempoRestanteInvertido = segundosPartida - (int)tiempoRestante;
-            tiempoInvert.text = "Timepo Logrado en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
+            tiempoInvert.text = "Tiempo Logrado en " + string.Format("{0:00}:{1:00}", Mathf.Floor(tiempoRestanteInvertido / 60), tiempoRestanteInvertido % 60);
         }
         
     }

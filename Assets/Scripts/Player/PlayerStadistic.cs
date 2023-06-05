@@ -56,7 +56,6 @@ public class PlayerStadistic : MonoBehaviour
         DestroyEnemigues();
         tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
         tiempo.StopTimer();
-        tiempo.tiempoInvertido();
         tiempo.PercentajePointAbouTimePlayerDeath();
         PointController puntos = FindObjectOfType<PointController>();
         puntos.ResetPoint();
