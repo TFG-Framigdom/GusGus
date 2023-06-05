@@ -40,6 +40,7 @@ De momento estos valores son los que se reconocen en la lista, si pones otro val
 - Los bordes del laberinto obviamente deben estar a 1. 
 - Los item de vida y tiempo solo puede haber 1 por laberinto.
 - Los item de puntos y enemigos puede haber todo los que quieras.
+- Se recomienda que el tamaño del laberinto sea minimo 4x4 o mayor.
 
 Si no se tienen en cuenta estos comentarios seguramente salgan fallos que de primeras no se sepa porque puede ser.
 
