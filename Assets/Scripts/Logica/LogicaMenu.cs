@@ -1,27 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Dan.Main;
 
 
 public class LogicaMenu : MonoBehaviour
 {
-    
-    public Button button{get {return GetComponent<Button>();}}
 
-    public RectTransform ChooseLevel;
-
-    public RectTransform AlertaCrearLaberinto;
+    public LevelEntranceSO levelEntranceSO;
 
     public void ConfiguracionMenuExit()
     {
-
+        LeaderboardCreator.ResetPlayer();
+        levelEntranceSO.score = 0;
         Application.Quit();
     }
 
-    public void ConfiguracionAlertaCrearLaberinto()
-    {
-        ChooseLevel.gameObject.SetActive(false);
-        AlertaCrearLaberinto.gameObject.SetActive(true);
-        
+    void OnApplicationQuit() {
+        LeaderboardCreator.ResetPlayer();
+        levelEntranceSO.score = 0;
     }
+
 
 }

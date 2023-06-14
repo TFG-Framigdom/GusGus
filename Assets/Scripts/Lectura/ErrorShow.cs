@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ErrorShow : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ErrorShow : MonoBehaviour
 
     private float timer;
 
-    [SerializeField] Text errorText;
+    [SerializeField] TextMeshProUGUI errorText;
     public RectTransform error;
 
 

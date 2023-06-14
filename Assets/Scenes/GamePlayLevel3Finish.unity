@@ -1775,6 +1775,7 @@ MonoBehaviour:
   puntos: 0
   puntosText: {fileID: 1920875083}
   finalizarPartida: {fileID: 1186782574}
+  levelEntrance: {fileID: 11400000, guid: b2b0b318d1f726c449ab11ae9b87aefb, type: 2}
 --- !u!1 &689969110
 GameObject:
   m_ObjectHideFlags: 0

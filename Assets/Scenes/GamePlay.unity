@@ -900,6 +900,7 @@ MonoBehaviour:
   puntos: 0
   puntosText: {fileID: 604997194}
   finalizarPartida: {fileID: 766449963}
+  levelEntrance: {fileID: 11400000, guid: b2b0b318d1f726c449ab11ae9b87aefb, type: 2}
 --- !u!114 &309613650
 MonoBehaviour:
   m_ObjectHideFlags: 0

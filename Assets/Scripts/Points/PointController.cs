@@ -16,6 +16,8 @@ public class PointController : MonoBehaviour
 
     bool puntosActivos = true;
 
+    public LevelEntranceSO levelEntrance;
+
     void Awake() {
         CargarPuntos();
     }
@@ -45,6 +47,7 @@ public class PointController : MonoBehaviour
     public void GuardarPuntos() {
         if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish")
         {
+            SavePoints();
             ResetPoint();
         }
         else
@@ -81,5 +84,7 @@ public class PointController : MonoBehaviour
         puntosActivos = true;
     }
 
-    
+    public void SavePoints(){
+        levelEntrance.score += puntos;
+    }
 }

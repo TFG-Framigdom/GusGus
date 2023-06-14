@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: LevelEntranceSO
   m_EditorClassIdentifier: 
   username: 
+  score: 0

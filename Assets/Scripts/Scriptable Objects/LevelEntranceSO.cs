@@ -6,6 +6,6 @@ public class LevelEntranceSO : ScriptableObject
     [SerializeField] public string username;
 
     [SerializeField] public int score;
-
+ 
    
 }

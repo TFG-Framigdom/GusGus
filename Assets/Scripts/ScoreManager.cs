@@ -9,13 +9,16 @@ public class ScoreManager : MonoBehaviour
 
     public UnityEvent<string, int> OnScoreChanged;
 
+    //public LeaderBoard leaderBoard;
+
     void Start()
     {
-       SubmitScore();
+        SubmitScore();
     }
 
     public void SubmitScore()
-    {
+    {   
+        
         OnScoreChanged.Invoke(levelEntranceSO.username, levelEntranceSO.score);
     }
 }

@@ -20,12 +20,15 @@ public class GameFinish : MonoBehaviour
     public LecturaFicheroSO lectura;
 
     public LecturaFicheroItemsSO lecturaItems;
+
+    private PointController puntosPantalla;
     
 
 
 
     void Start()
     {
+        puntosPantalla = FindObjectOfType<PointController>();
         tiempo = GameObject.Find("Tiempo").GetComponent<TimeController>();
         lectura.posicionEnemigoBasicos.Clear();
         lecturaItems.posicionItemPuntos.Clear();
@@ -46,6 +49,7 @@ public class GameFinish : MonoBehaviour
             TransicionDeScenes();
             OcultarPanel();
             PercentajePoints();
+            //SavePointsPlayer();
             Debug.Log("Game Finished");
         } 
         
@@ -90,7 +94,11 @@ public class GameFinish : MonoBehaviour
     }
 
     void PercentajePoints(){
-        tiempo.PercentajePointsAboutTime();
+        tiempo.PercentajePointsAboutTime();   
     }
+
+    // void SavePointsPlayer(){
+    //     puntosPantalla.SavePoints();
+    // }
 }
 
