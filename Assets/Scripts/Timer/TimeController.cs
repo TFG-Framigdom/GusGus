@@ -65,7 +65,7 @@ public class TimeController : MonoBehaviour
             if (tiempoRestante < 1){
                 finalizarPartida.gameObject.SetActive(true);
                 tiempoInvert.text = "Tiempo Finalizado";
-                PercentajePointsAboutTime();
+                PointsDisableAboutTimeZero();
                 OnDisable();
                 puntosPantalla.ResetPoint();
                 
@@ -133,10 +133,16 @@ public class TimeController : MonoBehaviour
     }
 
     public void PercentajePointAbouTimePlayerDeath(){
-        puntosExtra.text = "Puntos Extra: 0";
-        puntosPantalla.SumarPuntos(0);
-        puntos.text = "Puntos Totales: " + puntosPantalla.puntos;
+        puntosExtra.text = "";
+        puntos.text = "" ;
     }
+
+    public void PointsDisableAboutTimeZero(){
+        puntosExtra.text = " ";
+        puntos.text = " ";
+
+    }
+
 
 
 
