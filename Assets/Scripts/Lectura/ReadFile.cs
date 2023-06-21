@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using UnityEngine.UI;
-using Newtonsoft.Json;
+
 
 public class ReadFile : MonoBehaviour
 {

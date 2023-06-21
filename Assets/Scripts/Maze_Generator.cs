@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
-using UnityEngine;
 using System;
 
 public class Maze_Generator

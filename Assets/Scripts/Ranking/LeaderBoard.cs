@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Dan.Main;
-using UnityEngine.Events;
-using System;
 using TMPro;
 
 public class LeaderBoard : MonoBehaviour

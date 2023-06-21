@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.IO;
-using System;
 
 
 
@@ -83,7 +80,7 @@ public class Visualizer_Maze : MonoBehaviour
         var jsonObj = new
         {
             Tamano = tamano,
-            Tiempo = 20,
+            Tiempo = 35,
             Laberinto = matrizLevel1,
             LaberintoLevel2 = matrizLevel2,
             LaberintoLevel3 = matrizLevel3
