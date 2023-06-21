@@ -34,7 +34,7 @@ public class MazeGenerator : MonoBehaviour
             matrizString += "\n";
         }
 
-        mazeAleatorio.laberintoAleatorio = maze;
+        //mazeAleatorio.laberintoAleatorio = maze;
         
 
 

@@ -341,7 +341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76863851
@@ -391,10 +391,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.05
+  m_fontSize: 61.65
   m_fontSizeBase: 43.05
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -1305,8 +1305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 384, y: -222}
-  m_SizeDelta: {x: 125.6965, y: 26.3346}
+  m_AnchoredPosition: {x: 648.08, y: -400.51}
+  m_SizeDelta: {x: 229.86, y: 57.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &630141537
 Animator:
@@ -2388,6 +2388,7 @@ GameObject:
   - component: {fileID: 954135238}
   - component: {fileID: 954135237}
   - component: {fileID: 954135239}
+  - component: {fileID: 954135240}
   m_Layer: 0
   m_Name: pruebaAlgoritmo
   m_TagString: Untagged
@@ -2428,12 +2429,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954135236}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51304b700b5c2f3478b11b30626ed26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mazeAleatorio: {fileID: 11400000, guid: e52ab7ea3dcf1f94fbb996246a8f0205, type: 2}
+--- !u!114 &954135240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954135236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7914fa64187610b44a9588e5a8d3a965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazeAleatorio: {fileID: 0}
+  lecturaFichero: {fileID: 0}
 --- !u!1 &957993480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,8 +2487,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -152}
-  m_SizeDelta: {x: 139.3088, y: 36.5438}
+  m_AnchoredPosition: {x: 0, y: -259}
+  m_SizeDelta: {x: 160.24, y: 55.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &957993482
 Animator:
@@ -2638,8 +2653,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: -75}
-  m_SizeDelta: {x: 113.172, y: 109.1369}
+  m_AnchoredPosition: {x: 12.19, y: -85.184}
+  m_SizeDelta: {x: 143.27, y: 121.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &988551987
 Animator:
@@ -2937,8 +2952,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -273, y: -80}
-  m_SizeDelta: {x: 113.172, y: 109.1369}
+  m_AnchoredPosition: {x: -435, y: -85.184}
+  m_SizeDelta: {x: 115.91, y: 121.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1067353594
 Animator:
@@ -3445,7 +3460,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.7
+  m_fontSize: 50.1
   m_fontSizeBase: 43.05
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3629,6 +3644,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167058943}
   m_CullTransparentMesh: 1
+--- !u!1 &1178821805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178821807}
+  - component: {fileID: 1178821806}
+  m_Layer: 0
+  m_Name: MusicaPrincipal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!82 &1178821806
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178821805}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3360c68a5e2eb924188ffb17f7cb2d54, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1178821807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178821805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.29835, y: 4.0425344, z: -250.74327}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243761540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3841,7 +3983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000011444092, y: -93.8}
+  m_AnchoredPosition: {x: -0.000015258789, y: -93.799995}
   m_SizeDelta: {x: 11.2621, y: -58.571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1364971191
@@ -4376,8 +4518,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000049472, y: 99.6}
-  m_SizeDelta: {x: 265.7774, y: 163.3306}
+  m_AnchoredPosition: {x: 0, y: 210}
+  m_SizeDelta: {x: 355.45, y: 235.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646216506
 MonoBehaviour:
@@ -4564,6 +4706,7 @@ GameObject:
   - component: {fileID: 1717413628}
   - component: {fileID: 1717413627}
   - component: {fileID: 1717413625}
+  - component: {fileID: 1717413626}
   m_Layer: 5
   m_Name: MazeALG
   m_TagString: Untagged
@@ -4588,8 +4731,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 234, y: -79}
-  m_SizeDelta: {x: 113.172, y: 109.1369}
+  m_AnchoredPosition: {x: 445.8, y: -92.147}
+  m_SizeDelta: {x: 135.06, y: 133.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1717413625
 Animator:
@@ -4610,6 +4753,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1717413626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717413623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7914fa64187610b44a9588e5a8d3a965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazeAleatorio: {fileID: 11400000, guid: e52ab7ea3dcf1f94fbb996246a8f0205, type: 2}
+  lecturaFichero: {fileID: 11400000, guid: 5a6841b1b0c6e2047a89c5ddc0bc6e6e, type: 2}
 --- !u!114 &1717413627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4653,7 +4810,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1717413628}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1243761541}
+        m_TargetAssemblyTypeName: LogicaCambiarEscena, Assembly-CSharp
+        m_MethodName: CambiarEscena
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1717413628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4729,8 +4898,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: -87}
-  m_SizeDelta: {x: 294.21, y: 48}
+  m_AnchoredPosition: {x: 0.00000023842, y: -165.78}
+  m_SizeDelta: {x: 286.73, y: 55.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1744544865
 Animator:
@@ -5446,7 +5615,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.55
+  m_fontSize: 51.3
   m_fontSizeBase: 43.05
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5533,8 +5702,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000077164, y: -24}
-  m_SizeDelta: {x: 168.696, y: 48.0003}
+  m_AnchoredPosition: {x: 0, y: -44}
+  m_SizeDelta: {x: 177.67, y: 68.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2052260282
 Animator:
@@ -5615,6 +5784,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1717413626}
+        m_TargetAssemblyTypeName: Visualizer_Maze, Assembly-CSharp
+        m_MethodName: ClearMazeGenerator
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6048,10 +6229,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.05
+  m_fontSize: 49.65
   m_fontSizeBase: 43.05
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1

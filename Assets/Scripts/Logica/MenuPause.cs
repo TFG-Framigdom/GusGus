@@ -25,11 +25,16 @@ public class MenuPause : MonoBehaviour
             tiempo.StopTimer();
             enemigos.StopEnemigues();
             puntos.StopPoint();
-            player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<PlayerController>().isMovementEnabled = false;
+            //player.GetComponent<PlayerController>().enabled = false;
+            
         }else{
             tiempo.StopTimer();
             puntos.StopPoint();
-            player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<PlayerController>().isMovementEnabled = false;
+            //player.GetComponent<PlayerController>().enabled = false;
+            
+
         }
         
         
@@ -52,11 +57,17 @@ public class MenuPause : MonoBehaviour
             tiempo.ResumeTimer();
             enemigos.ReadyEnemigues();
             puntos.ResumePoint();
-            player.GetComponent<PlayerController>().enabled = true; 
+            player.GetComponent<PlayerController>().isMovementEnabled = true;
+            //player.GetComponent<PlayerController>().enabled = true; 
+            
+
         }else{
             tiempo.ResumeTimer();
             puntos.ResumePoint();
-            player.GetComponent<PlayerController>().enabled = true; 
+            player.GetComponent<PlayerController>().isMovementEnabled = true;
+            //player.GetComponent<PlayerController>().enabled = true; 
+            
+
         }
     }
 

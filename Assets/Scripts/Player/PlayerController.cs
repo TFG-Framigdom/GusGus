@@ -4,10 +4,10 @@ using UnityEngine;
 public class  PlayerController : MonoBehaviour
 {
 
-    public float speed = 5f;
+    public float speed = 3f;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
-    private bool isMovementEnabled = true;
+    public bool isMovementEnabled = true;
     private float tiempoMov;
 
     public LecturaFicheroSO lectura;
@@ -32,6 +32,7 @@ public class  PlayerController : MonoBehaviour
             moveVelocity = new Vector2(moveX, moveY).normalized;
         }else{
             moveVelocity = Vector2.zero;
+            tiempoMov = 0f;
         }
         
     }
@@ -47,11 +48,14 @@ public class  PlayerController : MonoBehaviour
             }else{
                 tiempoMov += Time.deltaTime;
                 float horizontalVelocity = Mathf.Clamp((moveVelocity.x * speed)/tiempoMov + rb.velocity.x,-speed,speed);
+                //float horizontalVelocity = Mathf.Clamp((moveVelocity.x * speed),-speed,speed);
                 float verticalVelocity = Mathf.Clamp((moveVelocity.y * speed)/tiempoMov + rb.velocity.y,-speed,speed);
                 rb.velocity = new Vector2(horizontalVelocity, verticalVelocity);
             }
         }else{
             rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            tiempoMov = 0f;
         }
     }
 
@@ -70,7 +74,7 @@ public class  PlayerController : MonoBehaviour
             
         }else if(other.gameObject.tag == "ItemTiempo"){
             TimeController tiempo =  FindObjectOfType<TimeController>();
-            tiempo.ItemTimer(10);
+            tiempo.ItemTimer(15);
             
             Destroy(other.gameObject);
 
@@ -81,7 +85,7 @@ public class  PlayerController : MonoBehaviour
 
         }else if(other.gameObject.tag == "ItemPunto"){
             PointController puntos = FindObjectOfType<PointController>();
-            puntos.SumarPuntos(10);
+            puntos.SumarPuntos(25);
             Destroy(other.gameObject);
         }
     }

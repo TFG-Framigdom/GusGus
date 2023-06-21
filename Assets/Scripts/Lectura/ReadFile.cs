@@ -43,38 +43,38 @@ public class ReadFile : MonoBehaviour
     }
 
     //MazeAleatorioSO
-    public void WriteJSON(string filePath)
-    {
-        List<int> mazeData = mazeAleatorio.laberintoAleatorio;
-        int[] tamano = new int[2];
-        if( mazeData.Count == 144){
-            tamano[0] = 12;
-            tamano[1] = 12;
-        }
-        // Crear un objeto anónimo con los atributos "tiempo", "tamano" y "laberinto"
-        var jsonObj = new
-        {
-            Tamano = tamano,
-            Tiempo = 300,
-            Laberinto = mazeData,
-            LaberintoLevel2 = mazeData,
-            LaberintoLevel3 = mazeData
-        };
+    // public void WriteJSON(string filePath)
+    // {
+    //     List<int> mazeData = mazeAleatorio.laberintoAleatorio;
+    //     int[] tamano = new int[2];
+    //     if( mazeData.Count == 144){
+    //         tamano[0] = 12;
+    //         tamano[1] = 12;
+    //     }
+    //     // Crear un objeto anónimo con los atributos "tiempo", "tamano" y "laberinto"
+    //     var jsonObj = new
+    //     {
+    //         Tamano = tamano,
+    //         Tiempo = 300,
+    //         Laberinto = mazeData,
+    //         LaberintoLevel2 = mazeData,
+    //         LaberintoLevel3 = mazeData
+    //     };
 
-        // Convertir el objeto a una cadena de texto en formato JSON
-        string jsonStr = JsonConvert.SerializeObject(jsonObj);
+    //     // Convertir el objeto a una cadena de texto en formato JSON
+    //     string jsonStr = JsonConvert.SerializeObject(jsonObj);
 
-        // Escribir la cadena de texto en un archivo en la ruta especificada
-        if (File.Exists(filePath))
-        {
-            File.Delete(filePath);
-            File.WriteAllText(filePath, jsonStr);
-        }else
-        {
-            File.WriteAllText(filePath, jsonStr);
-        }
+    //     // Escribir la cadena de texto en un archivo en la ruta especificada
+    //     if (File.Exists(filePath))
+    //     {
+    //         File.Delete(filePath);
+    //         File.WriteAllText(filePath, jsonStr);
+    //     }else
+    //     {
+    //         File.WriteAllText(filePath, jsonStr);
+    //     }
        
-    }
+    // }
 
 
 }
