@@ -1,25 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class  PlayerController : MonoBehaviour
 {
 
-    public float speed = 5f;
+    public float speed = 3f;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
-    private bool isMovementEnabled = true;
+    public bool isMovementEnabled = true;
     private float tiempoMov;
 
     public LecturaFicheroSO lectura;
 
     public GameObject player;
     private bool vulnerable = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         tiempoMov = 0f;
-        PlayerSpawner();
+        //PlayerSpawner();
     }
 
     // Update is called once per frame
@@ -32,6 +32,7 @@ public class  PlayerController : MonoBehaviour
             moveVelocity = new Vector2(moveX, moveY).normalized;
         }else{
             moveVelocity = Vector2.zero;
+            tiempoMov = 0f;
         }
         
     }
@@ -47,11 +48,14 @@ public class  PlayerController : MonoBehaviour
             }else{
                 tiempoMov += Time.deltaTime;
                 float horizontalVelocity = Mathf.Clamp((moveVelocity.x * speed)/tiempoMov + rb.velocity.x,-speed,speed);
+                //float horizontalVelocity = Mathf.Clamp((moveVelocity.x * speed),-speed,speed);
                 float verticalVelocity = Mathf.Clamp((moveVelocity.y * speed)/tiempoMov + rb.velocity.y,-speed,speed);
                 rb.velocity = new Vector2(horizontalVelocity, verticalVelocity);
             }
         }else{
             rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            tiempoMov = 0f;
         }
     }
 
@@ -70,13 +74,18 @@ public class  PlayerController : MonoBehaviour
             
         }else if(other.gameObject.tag == "ItemTiempo"){
             TimeController tiempo =  FindObjectOfType<TimeController>();
-            tiempo.ItemTimer(30);
+            tiempo.ItemTimer(15);
             
             Destroy(other.gameObject);
 
         }else if(other.gameObject.tag == "ItemVida"){
             PlayerStadistic playerStadistics = FindObjectOfType<PlayerStadistic>();
-            playerStadistics.PlayerHeal();
+            playerStadistics.PlayerHealth();
+            Destroy(other.gameObject);
+
+        }else if(other.gameObject.tag == "ItemPunto"){
+            PointController puntos = FindObjectOfType<PointController>();
+            puntos.SumarPuntos(25);
             Destroy(other.gameObject);
         }
     }
@@ -89,8 +98,10 @@ public class  PlayerController : MonoBehaviour
     }
 
     public void PlayerSpawner(){
-        Debug.Log("peneeee"+ lectura.posicionJugador);
-        player.transform.position = lectura.posicionJugador;
-        Debug.Log("peneee2"+ player.transform.position);
+        if(player.transform.position != lectura.posicionJugador)
+        {
+            player.transform.position = lectura.posicionJugador;
+        }
+        Debug.Log(player.transform.position + " --------------------------");
     }
 }

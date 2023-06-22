@@ -62,6 +62,7 @@ public class BasicEnemyController : MonoBehaviour
             }
             yield return null;
         }
+        
 
         // Aquí ya se tiene el transform del jugador, se puede usar para realizar cualquier acción que necesite.
     }
@@ -113,7 +114,7 @@ public class BasicEnemyController : MonoBehaviour
         }
     }
 
-    void ReadyEnemigues(){
+    public void ReadyEnemigues(){
         NavMeshAgent[] enemigos = FindObjectsOfType<NavMeshAgent>();
         foreach (var enemigo in enemigos)
         {

@@ -1,42 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Dan.Main;
 
 
 public class LogicaMenu : MonoBehaviour
 {
-    
-    public Button button{get {return GetComponent<Button>();}}
 
-    public RectTransform StartMenu;
- 
-    public RectTransform CargarFicheros;
+    public LevelEntranceSO levelEntranceSO;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ConfiguracionMenuExit()
     {
-        if(button.name == "ButtonPlay"){
-            button.onClick.AddListener(ConfiguracionMenuPlay);
-        }
-        else if(button.name == "ButtonVolver")
-        {
-            button.onClick.AddListener(ConfiguracionMenuVolver);
-        }
-        
+        LeaderboardCreator.ResetPlayer();
+        levelEntranceSO.score = 0;
+        Application.Quit();
     }
 
-    public void ConfiguracionMenuPlay()
-    {
-        StartMenu.gameObject.SetActive(false);
-        CargarFicheros.gameObject.SetActive(true);
-
+    void OnApplicationQuit() {
+        LeaderboardCreator.ResetPlayer();
+        levelEntranceSO.score = 0;
     }
 
-    public void ConfiguracionMenuVolver()
-    {
-        StartMenu.gameObject.SetActive(true);
-        CargarFicheros.gameObject.SetActive(false);
-    }
 
 }

@@ -44,10 +44,7 @@ public class BasicEnemySpawner : MonoBehaviour
 
     private GameObject GetEnemyBasic(int i)
     {
-        GameObject SceneEnemy = GameObject.FindGameObjectWithTag("EnemyBasic");
-
-        SceneEnemy = Instantiate(EnemyBasic, lectura.posicionEnemigoBasicos[i], Quaternion.identity, EnemyBasicParent.transform);
-    
+        GameObject SceneEnemy = Instantiate(EnemyBasic, lectura.posicionEnemigoBasicos[i], Quaternion.identity, EnemyBasicParent.transform);
 
         return SceneEnemy;
     }

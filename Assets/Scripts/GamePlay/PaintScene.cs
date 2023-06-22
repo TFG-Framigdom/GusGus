@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
-using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+
 
 public class PaintScene : MonoBehaviour
 {
     [Header("Tilemaps")]
     public Tilemap background;
     public Tilemap laberinto;
+    //public Tilemap laberintoLevel2;
     public Tilemap salida;
 
     [Header("Tiles")]
@@ -17,6 +17,7 @@ public class PaintScene : MonoBehaviour
     public TileBase tileLaberinto;
     public TileBase tileSalida;
     public TileBase tilePosicionInicial;
+    public TileBase tilePuntoExtra;
     
 
     private int dimensionX;
@@ -36,6 +37,8 @@ public class PaintScene : MonoBehaviour
     
     private int[,] maze;
 
+    // private int[,] mazeLevel2;
+
 
     void Awake()
     {
@@ -46,11 +49,37 @@ public class PaintScene : MonoBehaviour
 
     void Start()
     {
-        GenerarMapa();
-        AjustarCamara();
-        CentrarCamara();
-        CrearLaberinto();
-        PosicionamientoDeCharacters();
+        if(SceneManager.GetActiveScene().name == "GamePlay"){
+            maze = lectura.laberinto;
+            GenerarMapa();
+            AjustarCamara();
+            CentrarCamara();
+            CrearLaberinto();
+            PosicionamientoDeCharacters();
+        }
+        else if(SceneManager.GetActiveScene().name == "GamePlayLevel2"){
+            maze = lectura.laberintoLevel2;
+
+            GenerarMapa();
+            AjustarCamara();
+            CentrarCamara();
+            CrearLaberinto();
+            PosicionamientoDeCharacters();
+
+        }else if(SceneManager.GetActiveScene().name == "GamePlayLevel3Finish"){
+            maze = lectura.laberintoLevel3;
+
+            GenerarMapa();
+            AjustarCamara();
+            CentrarCamara();
+            CrearLaberinto();
+            PosicionamientoDeCharacters();
+
+        }else{
+            Debug.Log("No se ha podido cargar el nivel");
+        }
+        
+        //CrearLaberintoLevel2();
 
 
     }
@@ -63,6 +92,7 @@ public class PaintScene : MonoBehaviour
                 background.SetTile(new Vector3Int(x, y, 0), tileBackground);
             }
         }
+
         
     }
     
@@ -132,6 +162,8 @@ public class PaintScene : MonoBehaviour
                         
                     }else if(maze[filas,columnas]==21){
                         lecturaItems.posicionItemVida = new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0);
+                    }else if(maze[filas,columnas]==23){
+                        lecturaItems.posicionItemPuntos.Add(new Vector3(columnas+ 0.5f, dimensionX - filas - 1 + 0.5f, 0));
                     }
 
                 }
@@ -140,8 +172,33 @@ public class PaintScene : MonoBehaviour
             OnCharactersSpawned.Invoke();
         }
 
+    // public void CrearLaberintoLevel2(){
+    //     if(dimensionX == mazeLevel2.GetLength(0) && dimensionY == mazeLevel2.GetLength(1)){
+    //         for (int filas = 0; filas < dimensionX; filas++)
+    //         {
+    //             for (int columnas = 0; columnas < dimensionY; columnas++)
+    //             {
+    //                 if(mazeLevel2[filas,columnas] == 1){
+    //                     //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+    //                     laberintoLevel2.SetTile(new Vector3Int(columnas, dimensionX - filas - 1 , 0), tileLaberinto);
+    //                 }
+    //                 else if(mazeLevel2[filas,columnas] == 3){
+    //                     //Invertimos las filas y las columnas para que el laberinto se pinte correctamente respecto al Tilemap
+    //                     salida.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tileSalida);
+    //                 }else{
+    //                     background.SetTile(new Vector3Int(columnas, dimensionX - filas - 1, 0), tileBackground);
+    //                 }
+                    
+    //             }
+    //         }
+    //     }
+    //     else{
+    //         Debug.Log("El tamaño del laberinto no coincide con el tamaño del mapa");
+    //         Debug.Log("Tamaño del mapa: " + dimensionX + "x" + dimensionY);
+    //         Debug.Log("Tamaño del laberinto: " + mazeLevel2.GetLength(0) + "x" + mazeLevel2.GetLength(1));
+    //     }
+    // }
 
-
-    }
+}
 
 

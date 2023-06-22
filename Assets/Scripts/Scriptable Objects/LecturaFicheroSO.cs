@@ -6,6 +6,8 @@ public class LecturaFicheroSO : ScriptableObject
 {
     [SerializeField] public int tiempo;
 
+    [SerializeField] public float tiempoRestante;
+
     [SerializeField] public int TamañoX;
 
     [SerializeField] public int TamañoY;
@@ -14,9 +16,16 @@ public class LecturaFicheroSO : ScriptableObject
     
     [SerializeField] public int[,] laberinto;
 
+    [SerializeField] public int[,] laberintoLevel2;
+
+    [SerializeField] public int[,] laberintoLevel3;
+
     [SerializeField] public List<Vector3> posicionEnemigoBasicos;
 
     [SerializeField] public Vector3 posicionEnemigoBasico;
+
+    //[SerializeField] public List<int> laberintoAleatorio;
+
 
 
 
